@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="lt"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Palangos NT projektai – žemėlapis</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+:root{--esami:#1b9e77;--plan:#e08a1e;--ink:#1f2937}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink)}
+#app{display:flex;flex-direction:column;height:100%}
+header{display:flex;align-items:center;gap:14px;padding:10px 16px;background:#fff;border-bottom:1px solid #e6e8eb;box-shadow:0 1px 4px rgba(0,0,0,.05);z-index:1200;flex-wrap:wrap}
+header h1{font-size:16px;margin:0;font-weight:700}
+header .sub{font-size:12px;color:#6b7280}
+.legend{display:flex;gap:14px;margin-left:auto;font-size:12px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.dot.e{background:var(--esami)}.dot.p{background:var(--plan)}.dot.s{background:rgba(255,255,255,.6);border:2px solid #888;box-shadow:none}
+#wrap{position:relative;flex:1;min-height:0}
+#map{position:absolute;inset:0}
+#listBtn{position:absolute;top:12px;left:12px;z-index:1000;background:#fff;border:1px solid #d7dbe0;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+#panel{position:absolute;top:0;left:0;bottom:0;width:310px;max-width:84%;background:#fff;z-index:1100;transform:translateX(-105%);transition:transform .25s ease;box-shadow:2px 0 16px rgba(0,0,0,.16);display:flex;flex-direction:column}
+#panel.open{transform:none}
+#panel .ph{padding:12px 14px;border-bottom:1px solid #eef0f2;display:flex;align-items:center;justify-content:space-between}
+#panel .ph b{font-size:14px}
+.cl{cursor:pointer;font-size:22px;line-height:1;color:#9aa1a8;border:none;background:none}
+#search{margin:10px 14px;padding:9px 11px;border:1px solid #d7dbe0;border-radius:8px;font-size:13px}
+#list{overflow:auto;padding:0 6px 14px}
+.grp{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:#9aa1a8;padding:12px 10px 4px}
+.it{padding:9px 10px;border-radius:8px;cursor:pointer;display:flex;gap:9px;align-items:flex-start}
+.it:hover{background:#f3f5f7}
+.it .t{font-size:13px;font-weight:600;line-height:1.25}
+.it .m{font-size:11px;color:#6b7280}
+.leaflet-popup-content{margin:12px 14px;font-size:13px;line-height:1.45;min-width:190px}
+.pop .nm{font-weight:700;font-size:14px;margin-bottom:3px}
+.pop .pa{color:#6b7280;font-size:12px;margin-bottom:6px}
+.pop .row{margin:2px 0}.pop .row b{color:#374151}
+.pop .price{color:#b8860b;font-weight:700}
+.pop a.btn{display:inline-block;margin-top:10px;color:#fff;text-decoration:none;padding:7px 12px;border-radius:7px;font-weight:600;font-size:12px}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;color:#fff;margin-left:6px;vertical-align:middle}
+.tag.e{background:var(--esami)}.tag.p{background:var(--plan)}.tag.s{background:#888}
+.leaflet-bottom.leaflet-left{left:50%;transform:translateX(-50%);bottom:14px}
+.leaflet-control-zoom{box-shadow:0 2px 8px rgba(0,0,0,.18)!important;border:none!important}
+@media(max-width:560px){header h1{font-size:14px}.legend{width:100%;margin:4px 0 0}}
+</style></head><body>
+<div id="app">
+<header><h1>Palangos NT projektai</h1><span class="sub" id="cnt"></span>
+<div class="legend"><span><i class="dot e"></i>Esami / vystomi</span><span><i class="dot p"></i>Planuojami</span><span><i class="dot s"></i>Poilsio namai</span></div></header>
+<div id="wrap">
+<button id="listBtn">☰ Projektų sąrašas</button>
+<div id="panel"><div class="ph"><b>Projektai</b><button class="cl" id="clBtn">×</button></div>
+<input id="search" placeholder="Ieškoti projekto..."><div id="list"></div></div>
+<div id="map"></div></div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const DATA=[{"n": "Ritmai (1–3 etapai)", "a": "Vaivorykštės g. 4, Kunigiškiai, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 264 – 4 990 €/m²", "s": "https://www.ritmai.lt", "pa": "Apartamentai ir kotedžai", "sz": "21 – 66 m²", "u": "", "lat": 55.95651, "lng": 21.081194}, {"n": "Futuristai (A + 1–5 etapai)", "a": "Kontininkų g. 6, Kunigiškiai, Palanga", "g": "P", "sp": 0, "cit": 0, "pr": null, "s": "https://www.futuristai.lt", "pa": "Viešbutis ir apartamentai", "sz": "21 – 62 m²", "u": "", "lat": 55.948785, "lng": 21.073799}, {"n": "Vandens formos", "a": "J. Simpsono g. 17, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "7 800 – 12 000 €/m²", "s": "https://www.vandensformos.lt/", "pa": "Daugiabutis", "sz": "50 - 137 m²", "u": 33, "lat": 55.915134, "lng": 21.059906}, {"n": "Vila Verde Boutique apartments", "a": "Vanagupės g. 52, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "6 536 – 8 915 €/m²", "s": "https://vilaverde.lt/lt/", "pa": "Daugiabutis", "sz": "24 - 116 m²", "u": 18, "lat": 55.941386, "lng": 21.075374}, {"n": "Sensu", "a": "Vytauto g. 2, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "5 763 – 7 719 €/m²", "s": "https://sensupalanga.lt", "pa": "Daugiabutis", "sz": "34 - 72 m²", "u": 47, "lat": 55.893731, "lng": 21.062293}, {"n": "Nativo", "a": "Kutninkų g. 25, 29, 31, 33, 23, 27, 35, Monciškės, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "5 190 – 5 900 €/m²", "s": "https://www.nativo.lt", "pa": "Daugiabutis / poilsio apartamentai", "sz": "36 - 93 m²", "u": 149, "lat": 56.003691, "lng": 21.082175}, {"n": "Green Eden", "a": "Vaivorykštės g. 51, Kunigiškiai", "g": "E", "sp": 0, "cit": 0, "pr": "4 463 – 4 860 €/m²", "s": "http://greeneden.lt", "pa": "Daugiabutis", "sz": "17 - 56 m²", "u": 30, "lat": 55.966295, "lng": 21.082604}, {"n": "Palangos panorama", "a": "S. Daukanto g. 10, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 904 – 6 236 €/m²", "s": "https://www.tikrojipalanga.lt/palangospanorama/", "pa": "Daugiabutis", "sz": "39 - 95 m²", "u": 36, "lat": 55.916145, "lng": 21.060204}, {"n": "Palangos ašis", "a": "S. Daukanto g. 8, 10, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 733 – 6 070 €/m²", "s": "https://www.tikrojipalanga.lt/palangosasis/", "pa": "Daugiabutis", "sz": "43 - 73 m²", "u": 123, "lat": 55.916578, "lng": 21.060575}, {"n": "Infinitum sea II", "a": "Aido tak. 49, Kunigiškiai, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 339 – 4 920 €/m²", "s": "https://infinitumsea2.lt", "pa": "Daugiabutis / apartamentai", "sz": "24 - 46 m²", "u": 46, "lat": 55.966832, "lng": 21.084775}, {"n": "Vaivos Kasos 2", "a": "Kunigiškiai, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 138 – 3 572 €/m²", "s": "https://vaivoskasos.lt", "pa": "Daugiabutis", "sz": "25 - 56 m²", "u": 20, "lat": 55.962335, "lng": 21.08122}, {"n": "Sensoria", "a": "Vanagupės g. 36A, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 000 – 4 624 €/m²", "s": "https://www.sensoria.lt", "pa": "Daugiabutis / poilsio apartamentai", "sz": "25 - 72 m²", "u": 72, "lat": 55.938311, "lng": 21.074765}, {"n": "Jūros Natos", "a": "Vaivorykštės g. 66, 66A, 66B, 66C, 66D, 66E, Kunigiškiai, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "2 530 – 3 967 €/m²", "s": "https://jurosnatos.lt", "pa": "Daugiabutis", "sz": "25 - 61 m²", "u": 88, "lat": 55.969443, "lng": 21.084226}, {"n": "Takas į jūra, 4 etapas", "a": "Vaivorykštės g. 70A–70F, Kunigiškiai", "g": "E", "sp": 0, "cit": 0, "pr": "2 227 – 3 865 €/m²", "s": "https://takasijura.lt", "pa": "Daugiabutis (sublokuoti namai)", "sz": "21 - 47 m²", "u": 126, "lat": 55.969196, "lng": 21.083726}, {"n": "Melno Rezidencija", "a": "Vytauto g. 4, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": null, "s": "https://www.melnorezidencija.lt", "pa": "Poilsio ir svečių namai prie SPA", "sz": "36 - 76 m²", "u": 75, "lat": 55.893455, "lng": 21.063493}, {"n": "Norai", "a": "Vanagupės g. 41, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 793 – 4 574 €/m²", "s": "https://www.norai.lt/lt", "pa": "Daugiabutis / poilsio apartamentai", "sz": "24 - 55 m²", "u": 120, "lat": 55.938627, "lng": 21.076453}, {"n": "Samanų takais", "a": "Vanagupės g. 13D, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": null, "s": "https://samanutakais.lt", "pa": "Daugiabutis", "sz": "28.8 - 53.3 m²", "u": 174, "lat": 55.940909, "lng": 21.071382}, {"n": "Vanagupės g. 36", "a": "Vanagupės g. 36, Palanga", "g": "E", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/lt/vanagupes-g-36/", "pa": "Daugiabutis", "sz": "29.1 - 63.2 m²", "u": 17, "lat": 55.938558, "lng": 21.073802}, {"n": "Solus terasos", "a": "Vanagupės g. 36B, 36C, 36D, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 800 – 4 400 €/m²", "s": "https://solusterasos.lt", "pa": "Daugiabutis", "sz": "18 - 87 m²", "u": 160, "lat": 55.938633, "lng": 21.074725}, {"n": "Palangos šilas D", "a": "Žiogų g. 6, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": "3 009 – 3 200 €/m²", "s": "https://www.parduodamibutai.com", "pa": "Daugiabutis", "sz": "24 - 73 m²", "u": 60, "lat": 55.921728, "lng": 21.081584}, {"n": "Vytauto g. 32", "a": "Vytauto g. 32, Palanga", "g": "E", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/lt/vytauto-g-32/", "pa": "Daugiabutis", "sz": "54 - 152 m²", "u": 55, "lat": 55.934708, "lng": 21.077105}, {"n": "Vytauto g. 21", "a": "Vytauto g. 21, Palanga", "g": "P", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/lt/vytauto-g-21/", "pa": "Daugiabutis", "sz": "44.1 - 74.7 m²", "u": 30, "lat": 55.911128, "lng": 21.062271}, {"n": "Kęstučio g. 21", "a": "Kęstučio g. 21, Kunigiškiai, Palanga", "g": "P", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/lt/kestucio-g-21/", "pa": "Daugiabutis", "sz": "", "u": 25, "lat": 55.9186, "lng": 21.0658}, {"n": "J. Simpsono g. 8", "a": "J. Simpsono g. 8, Palanga", "g": "P", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/lt/j-simpsono-g-8/", "pa": "Daugiabutis", "sz": "46 - 60 m²", "u": 63, "lat": 55.915337, "lng": 21.061529}, {"n": "Palangos trio", "a": "Pirties g. 4A, Palanga", "g": "P", "sp": 0, "cit": 0, "pr": null, "s": "https://palangostrio.lt", "pa": "Daugiabutis", "sz": "30 - 77 m²", "u": 66, "lat": 55.918862, "lng": 21.075911}, {"n": "Vasario 16-osios g. 6", "a": "Vasario 16-osios g. 6, Palanga", "g": "P", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/en/vasario-16-osios-g-6/", "pa": "Daugiabutis", "sz": "34 - 87 m²", "u": 25, "lat": 55.915101, "lng": 21.068723}, {"n": "Šermukšnių g. 13", "a": "Šermukšnių g. 13, Palanga", "g": "P", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/en/176123-2/", "pa": "Daugiabutis", "sz": "31 - 88 m²", "u": 30, "lat": 55.92857, "lng": 21.064143}, {"n": "Vytauto 123A", "a": "Vytauto g. 123A, Palanga", "g": "P", "sp": 0, "cit": 1, "pr": null, "s": "https://citify.eu/en/vytauto-g-123a/", "pa": "Daugiabutis", "sz": "36 - 92 m²", "u": 44, "lat": 55.929335, "lng": 21.072557}, {"n": "Viešnagė", "a": "J. Simpsono g. 21, Palanga", "g": "E", "sp": 0, "cit": 0, "pr": null, "s": "https://viesnagepalanga.lt", "pa": "Poilsio pastatų grupė (4 korpusai, apartamentai)", "sz": "47 – 126 m²", "u": 39, "lat": 55.915368, "lng": 21.059023}, {"n": "Poilsio namai Vyturys", "a": "S. Dariaus ir S. Girėno g. 20, Palanga", "g": "S", "sp": 1, "cit": 0, "pr": null, "s": "", "pa": "Poilsio namai (orientyras)", "sz": "", "u": "", "lat": 55.907399, "lng": 21.068138}];const COL={E:'#1b9e77',P:'#e08a1e'};
+const map=L.map('map',{scrollWheelZoom:true,zoomControl:false});
+L.control.zoom({position:'bottomleft'}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',subdomains:'abcd',maxZoom:20}).addTo(map);
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function popup(p){const cl=p.g=='E'?'e':(p.g=='P'?'p':'s');const lbl=p.g=='E'?'Esamas':(p.g=='P'?'Planuojamas':'Poilsio namai');
+ let h='<div class="pop"><div class="nm">'+esc(p.n)+'<span class="tag '+cl+'">'+lbl+'</span></div>';
+ if(p.pa)h+='<div class="pa">'+esc(p.pa)+'</div>';
+ if(p.a)h+='<div class="row"><b>Adresas:</b> '+esc(p.a)+'</div>';
+ if(p.sz)h+='<div class="row"><b>Butų plotai:</b> '+esc(p.sz)+'</div>';
+ if(p.u)h+='<div class="row"><b>Butų kiekis:</b> '+esc(p.u)+'</div>';
+ if(p.pr)h+='<div class="row price">'+esc(p.pr)+'</div>';
+ if(p.s){const t=p.cit?'Peržiūrėti citify.eu →':'Atidaryti svetainę →';h+='<a class="btn" target="_blank" rel="noopener" href="'+esc(p.s)+'" style="background:'+(p.g=='P'?COL.P:COL.E)+'">'+t+'</a>';}
+ return h+'</div>';}
+const markers={};const bounds=[];
+DATA.forEach((p,i)=>{
+ const st=p.sp?{radius:18,weight:2,color:'#888',fillColor:'#ffffff',fillOpacity:.55}:{radius:9,weight:2,color:'#fff',fillColor:p.g=='E'?COL.E:COL.P,fillOpacity:1};
+ const mk=L.circleMarker([p.lat,p.lng],st);
+ mk.bindPopup(popup(p),{closeButton:true,autoPan:true,maxWidth:260});
+ mk.on('mouseover',function(){this.openPopup()});
+ mk.addTo(map);markers[i]=mk;bounds.push([p.lat,p.lng]);});
+map.fitBounds(bounds,{padding:[45,45],maxZoom:14});
+document.getElementById('cnt').textContent=DATA.length+' objektai';
+const panel=document.getElementById('panel'),list=document.getElementById('list');
+const GN={E:'Esami / vystomi',P:'Planuojami',S:'Poilsio namai'};
+function renderList(f){list.innerHTML='';['E','P','S'].forEach(g=>{const items=DATA.map((p,i)=>({p,i})).filter(o=>o.p.g==g&&(!f||o.p.n.toLowerCase().includes(f)));if(!items.length)return;
+ const h=document.createElement('div');h.className='grp';h.textContent=GN[g];list.appendChild(h);
+ items.forEach(({p,i})=>{const d=document.createElement('div');d.className='it';const dc=g=='E'?'e':(g=='P'?'p':'s');
+  d.innerHTML='<span class="dot '+dc+'" style="margin-top:4px"></span><span><span class="t">'+esc(p.n)+'</span><br><span class="m">'+esc(p.a)+(p.pr?' · '+esc(p.pr):'')+'</span></span>';
+  d.onclick=()=>{map.setView([p.lat,p.lng],16,{animate:true});markers[i].openPopup();if(window.innerWidth<700)panel.classList.remove('open')};list.appendChild(d);});});}
+renderList('');
+document.getElementById('listBtn').onclick=()=>panel.classList.add('open');
+document.getElementById('clBtn').onclick=()=>panel.classList.remove('open');
+document.getElementById('search').oninput=e=>renderList(e.target.value.toLowerCase());
+</script></body></html>
