@@ -1,430 +1,197 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Palanga NT Market &amp; Concept — Vyturys site</title>
+<title>Kenova · Palanga Market &amp; Vyturys Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--esami:#1b9e77;--plan:#e08a1e;--ink:#1b2733;--mut:#5b6b7a;--line:#e6ebf0;--bg:#f4f7f9;--gold:#b8860b;--card:#fff;
---z1:#2c7fb8;--z2:#41b6c4;--z3:#7fcdbb;--z4:#e08a1e;--z5:#d7301f}
+:root{--bg:#f5f5f5;--paper:#ffffff;--ink:#111417;--mut:#6b7178;--line:#e6e6e6;--blue:#213bc2;--blue2:#66adff;--gold:#d59f5d;--grey:#cccccc}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
-header.hero{background:linear-gradient(135deg,#14364a,#1b6b6f 65%,#1b9e77);color:#fff;padding:40px 0 32px;margin-bottom:24px}
-header.hero .wrap{padding-top:0;padding-bottom:0}
-.hero h1{margin:0 0 8px;font-size:30px;font-weight:800;letter-spacing:-.5px}
-.hero p{margin:0;opacity:.92;font-size:15px;max-width:800px}
-.hero .meta{margin-top:14px;font-size:12.5px;opacity:.8}
-.toc{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:16px;font-size:12px}
-.toc a{color:#cdeee2;text-decoration:none;border-bottom:1px dotted #7fd0b8}
-.eyebrow{text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:700;color:var(--esami);margin:40px 0 4px}
-h2{font-size:22px;font-weight:800;margin:2px 0 14px;letter-spacing:-.3px}
-h3{font-size:16px;font-weight:700;margin:0 0 10px}
-p.lead{color:var(--mut);font-size:14.5px;margin:0 0 18px;max-width:880px}
-.grid{display:grid;gap:16px}
-.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 3px rgba(20,40,60,.04)}
-.card.hl{border-color:#bfe8d6;background:#f2faf7}
-.kpi .n{font-size:29px;font-weight:800;line-height:1;letter-spacing:-1px}
-.kpi .l{font-size:12.5px;color:var(--mut);margin-top:6px}
-.kpi .s{font-size:11.5px;color:var(--esami);margin-top:3px;font-weight:600}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{background:#f7f9fb;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--mut);font-weight:700}
-tbody tr:hover{background:#f9fbfc}
-.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700;color:#fff}
-.z1{background:var(--z1)}.z2{background:var(--z2)}.z3{background:var(--z3);color:#0a3b33}.z4{background:var(--z4)}.z5{background:var(--z5)}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55;font-size:15px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px 70px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--line)}
+header.hero .wrap{padding-top:22px;padding-bottom:24px}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo svg{width:150px;height:auto;display:block}
+.kicker{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--mut)}
+.hero h1{font-size:33px;line-height:1.07;font-weight:800;letter-spacing:-.6px;margin:20px 0 8px}
+.hero p{margin:0;color:var(--mut);max-width:800px}
+.hero .meta{margin-top:12px;font-size:12px;color:var(--mut)}
+.accent{color:var(--blue)}
+.eyebrow{font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);font-weight:700;margin:40px 0 2px}
+h2{font-size:25px;font-weight:800;letter-spacing:-.4px;margin:2px 0 14px}
+h3{font-size:13.5px;font-weight:700;margin:0 0 8px}
+p.lead{color:var(--mut);margin:0 0 18px;max-width:840px}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 17px}
+.kpi .n{font-size:30px;font-weight:800;line-height:1;color:var(--blue);letter-spacing:-1px}
+.kpi .l{font-size:12px;color:var(--mut);margin-top:7px}
+.kpi .s{font-size:11px;color:var(--gold);margin-top:3px;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);font-weight:700}
+tbody tr:hover{background:#fafbfc}
 .num{font-variant-numeric:tabular-nums;text-align:right}
-.bar{height:9px;border-radius:6px;background:#eef2f5;overflow:hidden;min-width:70px}
-.bar>span{display:block;height:100%;border-radius:6px}
-.chartbox{position:relative;height:300px}.chartbox.tall{height:420px}
-.note{font-size:12px;color:var(--mut)}
-.tag{display:inline-block;background:#eef4f2;color:#166a52;border:1px solid #cfe6dd;border-radius:6px;padding:2px 8px;font-size:11.5px;font-weight:600;margin:2px 4px 2px 0}
-.callout{border-left:4px solid var(--esami);background:#f2faf7;padding:12px 16px;border-radius:0 10px 10px 0;font-size:13.5px}
-.callout.warn{border-color:var(--plan);background:#fff7ec}
-.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.swot .q{border-radius:12px;padding:14px 16px}
-.swot h4{margin:0 0 8px;font-size:14px}
-.swot ul{margin:0;padding-left:18px;font-size:12.8px}.swot li{margin:4px 0}
-.S{background:#eafaf3;border:1px solid #bfe8d6}.W{background:#fdeeee;border:1px solid #f4cccc}
-.O{background:#eef5fd;border:1px solid #cfe0f5}.T{background:#fff6e9;border:1px solid #f3ddb4}
-.rec{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
-.rec .r{flex:none;width:30px;height:30px;border-radius:50%;background:var(--esami);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
-.rec .b{font-size:13.5px}
-.matrix td.c{text-align:center;font-weight:800}
-.dot{font-size:15px}.dot.hi{color:var(--esami)}.dot.mid{color:var(--plan)}.dot.lo{color:#cdd6dd}
-.concept{border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.concept .top{padding:14px 16px;color:#fff}
-.concept .bd{padding:14px 16px}
-.concept ul{margin:8px 0 0;padding-left:18px;font-size:12.6px}.concept li{margin:4px 0}
-.stack{display:flex;height:46px;border-radius:8px;overflow:hidden;font-size:11px;color:#fff;font-weight:700}
-.stack div{display:flex;align-items:center;justify-content:center;text-align:center}
-.badge{display:inline-block;background:#14364a;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
-footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--mut)}
-footer a{color:#2c7fb8}
-@media(max-width:820px){.g2,.g3,.g4,.swot{grid-template-columns:1fr}.hero h1{font-size:23px}}
+.price{color:var(--gold);font-weight:700}
+.callout{border-left:3px solid var(--blue);background:#eef1fb;padding:11px 15px;border-radius:0 6px 6px 0;font-size:13.5px}
+.callout.warn{border-color:var(--gold);background:#faf3e9}
+.chartbox{position:relative;height:340px}
+.note{font-size:11.5px;color:var(--mut)}
+.win{color:#1b7a4b;font-weight:700}.fail{color:#b23b3b;font-weight:700}
+.verdict{background:var(--blue);color:#eef1ff;border-radius:8px;padding:18px 20px}
+.verdict h3{color:#fff;font-size:14px;letter-spacing:1px;text-transform:uppercase}
+.verdict .big{font-size:21px;font-weight:800;line-height:1.25;margin:6px 0 8px;color:#fff;letter-spacing:-.3px}
+ul.tight{margin:6px 0 0;padding-left:17px}ul.tight li{margin:4px 0;font-size:12.8px}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:20px}
+.pill.o{background:#e7edfc;color:var(--blue)}.pill.b{background:#eef7ea;color:#1b7a4b}.pill.w{background:#faf0e2;color:#a06a22}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--mut)}
+@media(max-width:820px){.g2,.g3,.g4{grid-template-columns:1fr}.hero h1{font-size:27px}}
 </style></head>
 <body>
 <header class="hero"><div class="wrap">
-<div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-bottom:8px">Palanga · Market read &amp; development concept</div>
-<h1>Palanga New-Build Market &amp; a Concept for the Vyturys Site</h1>
-<p>What is being built in Palanga, where, at what price and how fast it sells — and, given a <b>resort-scale residential + hotel</b> development at <b>S. Dariaus ir S. Girėno g. 20</b> (Poilsio namai Vyturys), what <b>concept</b> best combines guest/buyer attractiveness with a strong, well-priced sell-out to maximise profit.</p>
-<div class="toc">
-<a href="#s2">Market snapshot</a><a href="#s3">Zone map</a><a href="#s4">Absorption</a><a href="#s5">Selling points</a><a href="#s6">Trends</a><a href="#s7">External context</a><a href="#s8">The site &amp; the opportunity</a><a href="#s9">Concept options</a><a href="#s10">Recommended concept</a><a href="#s11">SWOT</a><a href="#s12">Roadmap</a>
+<div class="brandrow">
+<div class="logo"><svg viewBox="0 0 1000 196.03" xmlns="http://www.w3.org/2000/svg" fill="#111417"><path d="M186.49,0H9.55C4.28,0,0,4.28,0,9.55v176.94c0,5.27,4.28,9.55,9.55,9.55h176.94c5.27,0,9.55-4.28,9.55-9.55V9.55c0-5.27-4.28-9.55-9.55-9.55ZM160.45,159.38c0,.59-.48,1.06-1.06,1.06h-18.47c-.27,0-.52-.1-.72-.28l-46.06-42.13c-.46-.42-.46-1.15,0-1.57l13.13-12.01c.41-.37,1.03-.37,1.43,0l30.12,27.55c.68.62,1.78.14,1.78-.78v-45.37c0-.3.13-.58.34-.78l17.73-16.21c.68-.62,1.78-.14,1.78.78v89.74ZM160.45,43.84c0,.3-.13.58-.34.78l-19.5,17.84h0s-84.84,77.59-84.84,77.59c-.2.18-.45.28-.72.28h-18.4c-.59,0-1.06-.48-1.06-1.06V56.77c0-.59.48-1.06,1.06-1.06h18.34c.27,0,.52.1.72.28l24.14,22.07c.46.42.46,1.15,0,1.57l-13.13,12.01c-.41.37-1.03.37-1.43,0l-8.07-7.38c-.68-.62-1.78-.14-1.78.78v26.01c0,.92,1.1,1.41,1.78.78l83.05-75.96c.2-.18.45-.28.72-.28h18.42c.59,0,1.06.48,1.06,1.06v7.19Z"/><path d="M376.45,144.03h14.38c.93,0,1.41-1.1.77-1.78l-48.02-51.46.43-.36,43.96-36.55c.76-.63.31-1.87-.68-1.87h-15.64c-.25,0-.49.09-.68.24l-67.31,55.7c-.69.57-1.73.08-1.73-.82v-54.07c0-.58-.47-1.06-1.06-1.06h-11.72c-.58,0-1.06.47-1.06,1.06v89.9c0,.58.47,1.06,1.06,1.06h11.72c.58,0,1.06-.47,1.06-1.06v-18.1c0-.32.15-.63.4-.83l32.12-25.72c.44-.35,1.08-.3,1.46.13l39.75,45.22c.2.23.49.36.8.36Z"/><path d="M497.14,62.25v-9.19c0-.58-.47-1.06-1.06-1.06h-84.59c-.58,0-1.06.47-1.06,1.06v89.9c0,.58.47,1.06,1.06,1.06h84.59c.58,0,1.06-.47,1.06-1.06v-9.19c0-.58-.47-1.06-1.06-1.06h-70.75c-.58,0-1.06-.47-1.06-1.06v-31.12c0-.58.47-1.06,1.06-1.06h62.91c.58,0,1.06-.47,1.06-1.06v-7.99c0-.58-.47-1.06-1.06-1.06h-62.91c-.58,0-1.06-.47-1.06-1.06v-23.94c0-.58.47-1.06,1.06-1.06h70.75c.58,0,1.06-.47,1.06-1.06Z"/><path d="M623.73,142.97V53.06c0-.58-.47-1.06-1.06-1.06h-11.72c-.58,0-1.06.47-1.06,1.06v72.12c0,.95-1.15,1.42-1.81.75l-72.96-73.61c-.2-.2-.47-.31-.75-.31h-12.91c-.58,0-1.06.47-1.06,1.06v89.9c0,.58.47,1.06,1.06,1.06h11.72c.58,0,1.06-.47,1.06-1.06v-71.99c0-.95,1.15-1.42,1.81-.75l72.83,73.48c.2.2.47.31.75.31h13.04c.58,0,1.06-.47,1.06-1.06Z"/><path d="M700.59,49.88c-33.25,0-55.59,19.35-55.59,48.14s22.34,48.14,55.59,48.14,55.59-19.35,55.59-48.14-22.34-48.14-55.59-48.14ZM700.59,134.85c-25.36,0-41.75-14.46-41.75-36.83s16.39-36.83,41.75-36.83,41.75,14.46,41.75,36.83-16.39,36.83-41.75,36.83Z"/><path d="M866.82,52.55l-44.69,80.66c-.4.73-1.45.73-1.85,0l-44.83-80.66c-.19-.34-.54-.54-.93-.54h-14.67c-.81,0-1.32.88-.92,1.59l51.76,89.9c.19.33.54.53.92.53h19.04c.38,0,.73-.2.92-.53l51.76-89.9c.41-.71-.1-1.59-.92-1.59h-14.67c-.39,0-.74.21-.93.55Z"/><path d="M972.74,122.87l12.28,20.64c.19.32.54.52.91.52h13.01c.83,0,1.34-.91.9-1.61l-55.23-89.9c-.19-.31-.53-.5-.9-.5h-18.04c-.37,0-.71.19-.9.5l-55.36,89.9c-.43.71.07,1.61.9,1.61h13.14c.38,0,.72-.2.91-.52l12.15-20.63c.19-.32.54-.52.91-.52h74.39c.37,0,.72.2.91.52ZM935.67,59.7l29.13,49.75c.41.71-.1,1.59-.91,1.59h-58.39c-.82,0-1.33-.89-.91-1.6l29.26-49.75c.41-.7,1.42-.7,1.83,0Z"/></svg></div>
+<div class="kicker">Rinkos analizė · konfidencialu</div>
 </div>
-<div class="meta">Base: 38 tracked Palanga projects · ~2,290 apartments · project sites &amp; citify.eu + external market sources · <b>all €/m² are asking (marketing) prices, not achieved</b> · prepared 2026&nbsp;07</div>
+<h1>Palanga residential market &amp; the <span class="accent">Vyturys</span> concept</h1>
+<p>A focused read of Palanga's apartment <b>sales volumes, prices and buying criteria</b> — and what they mean for a residential + wellness scheme on the former “Vyturys” site (S. Dariaus ir S. Girėno g. 20). Built to test likely <b>sales pace and pricing</b>.</p>
+<div class="meta">Sources: Registrų centras · Citus / 15min · CityNow / Orner (realu.lt) · citify.eu · internal Projektai Palanga.xlsx · all €/m² are asking (marketing) prices unless noted · 2026-07</div>
 </div></header>
 <div class="wrap">
 
-<!-- EXEC -->
-<div class="eyebrow" id="s1">01 · Executive summary</div>
-<h2>The short version</h2>
-<div class="grid g3">
-  <div class="card"><h3>🌊 Two markets in one resort</h3><p class="note">A <b>premium centre core</b> (ceiling up to €12k/m² — Vandens formos) and a <b>low-rise forest belt</b> in Kunigiškiai (€2.2–5k/m²). Read <b>ceilings, not averages</b>: the true top is central, and the southern-centre (the Vyturys street) is a high-priced pocket where prestige new-builds fetch <b>€10k+/m²</b>.</p></div>
-  <div class="card"><h3>⚡ Scarcity, location &amp; wellness win</h3><p class="note">Best sell-through goes to <b>premium, well-located, amenity-rich</b> schemes (Sensu 83%, Sensoria 81%, Vanagupės pušys 79%). Large commodity forest blocks stall (Takas 9%, Ritmai 2 14%). Price is not the barrier — <b>differentiation is</b>.</p></div>
-  <div class="card"><h3>🌡️ Seasonality is the market's flaw</h3><p class="note">Palanga is Lithuania's biggest but most <b>seasonal</b> resort. A concept that delivers <b>year-round reasons to be there — wellness, hospitality, services</b> — beats the town's core weakness and commands a premium.</p></div>
-  <div class="card hl" style="grid-column:span 3"><h3>🏆 Recommended concept — a year-round wellness resort with serviced residences</h3>
-  <p class="note" style="max-width:none">Use the site's resort-scale envelope for a <b>wellness-anchored, residential-led</b> scheme: <b>premium serviced residences (small, efficient units designed to ticket price) as the profit engine</b>, wrapped around a signature SPA + pools + F&amp;B and a <b>small, rental-managed aparthotel</b> — a residents'/guest amenity for animation and differentiation, <b>not</b> a hotel competing with Palanga's established SPA resorts (the hotel/SPA market is already mature — see §07). The wellness/amenity lifts residence prices and absorption (serviced premium ~15–30%), offsets the site's ~1.3 km distance from the beach, and helps defeat seasonality; the residences fund the scheme and are sold at the top of the local range — and the wellness "destination" is also what offsets this site being ~1.2–1.4 km from the beach. Your own March 2026 concept (12,285 m² apartments + 4,846 m² SPA/hotel) already matches this direction. <b>One caveat:</b> the scarce-supply case is proven for <i>apartments</i>; the <i>hotel/SPA</i> supply still needs its own analysis (§10).</p></div>
-</div>
-
-<!-- SNAPSHOT -->
-<div class="eyebrow" id="s2">02 · Market at a glance</div>
-<h2>The pipeline in numbers</h2>
-<div class="grid g4" style="margin-bottom:16px">
-  <div class="card kpi"><div class="n">38</div><div class="l">Tracked projects</div><div class="s">5 zones</div></div>
-  <div class="card kpi"><div class="n">~2,290</div><div class="l">Apartments / units</div><div class="s">excl. hotel keys</div></div>
-  <div class="card kpi"><div class="n">31</div><div class="l">Active or planned</div><div class="s">17 building · 14 planned</div></div>
-  <div class="card kpi"><div class="n">€2.2–12k</div><div class="l">Price span €/m²</div><div class="s">4× by location</div></div>
+<!-- 1 MARKET & SALES -->
+<div class="eyebrow">01 · Market &amp; sales volume</div>
+<h2>How much actually sells</h2>
+<p class="lead">Palanga is a liquid market — but the <b>premium slice you compete in is small</b>, and that number, not the headline, sets your realistic pace.</p>
+<div class="grid g4" style="margin-bottom:14px">
+  <div class="card kpi"><div class="n">~1,200</div><div class="l">Apartments sold / year (new + resale)</div><div class="s">RC: 1,303 (’22) · 1,159 (’23)</div></div>
+  <div class="card kpi"><div class="n">350–400</div><div class="l">Primary (developer) sales / year</div><div class="s">~30/mo · 37% to Orner’s 2 schemes</div></div>
+  <div class="card kpi"><div class="n">100–150</div><div class="l">Premium units / yr (≥€4.5–5k/m²)</div><div class="s">your addressable “pie”</div></div>
+  <div class="card kpi"><div class="n">~1,136</div><div class="l">Unsold primary supply</div><div class="s">≈3 yrs’ stock · pipeline ~2,300</div></div>
 </div>
 <div class="grid g2">
-  <div class="card"><h3>Project pipeline by status</h3><div class="chartbox"><canvas id="statusChart"></canvas></div></div>
-  <div class="card"><h3>Average asking price band by zone (€/m²)</h3><div class="chartbox"><canvas id="zonePriceChart"></canvas></div>
-  <p class="note" style="margin-top:8px"><b>⚠️ Averages mislead — read them with care.</b> Small samples (Pietūs/Birutė = essentially one priced project, Sensu) and each zone mixes budget + luxury, so averages <b>understate</b> what a top product achieves. Anchor on the ceilings below, not these bars.</p></div>
-</div>
-
-<div class="eyebrow" style="margin-top:30px">Reading prices right</div>
-<h2>Ceilings, not averages — and a secondary-market check</h2>
-<p class="lead">The averages make Pietūs/Birutė look like the priciest zone — an artefact of one project. The real top of the market is <b>central</b>, and secondary-market data shows the <b>southern-centre (the Vyturys street) is one of Palanga's higher-priced pockets</b>, with prestige new-builds fetching €10k+/m².</p>
-<div class="grid g2">
-  <div class="card"><h3>New-build price ceiling by zone (flagship, asking €/m²)</h3>
-  <table><thead><tr><th>Zone</th><th>Flagship</th><th class="num">Top €/m²</th></tr></thead><tbody>
-  <tr style="background:#fffdf5"><td><span class="pill z4">Centras</span></td><td>Vandens formos</td><td class="num"><b>7,800–12,000</b></td></tr>
-  <tr><td><span class="pill z3">Vanagupė</span></td><td>Vila Verde</td><td class="num">6,536–8,915</td></tr>
-  <tr><td><span class="pill z5">Pietūs·Birutė</span></td><td>Sensu <span class="note">(only 1 priced)</span></td><td class="num">5,763–7,719</td></tr>
-  <tr><td><span class="pill z1">Monciškės</span></td><td>Nativo</td><td class="num">5,190–5,900</td></tr>
-  <tr><td><span class="pill z2">Kunigiškiai</span></td><td>Ritmai 3 NOP</td><td class="num">4,553–4,990</td></tr>
-  </tbody></table>
-  <p class="note" style="margin-top:8px">The <b>Centre carries the true ceiling</b> (up to €12k). "Birutė highest" was a sampling illusion.</p></div>
-  <div class="card"><h3>Secondary / general-market anchors (asking, €/m²)</h3>
+  <div class="card"><h3>Transactions by year (Registrų centras)</h3>
+  <table><thead><tr><th>Year</th><th class="num">Apts + poilsio</th><th class="num">Avg €/m²</th><th>Note</th></tr></thead><tbody>
+  <tr><td>2022</td><td class="num">1,303</td><td class="num">~2,400</td><td class="note">actual</td></tr>
+  <tr><td>2023</td><td class="num">1,159</td><td class="num">~2,700</td><td class="note">actual</td></tr>
+  <tr><td>2024</td><td class="num">n/p</td><td class="num">—</td><td class="note">new-build = 58% of all deals</td></tr>
+  <tr><td>2025</td><td class="num">↑ growth</td><td class="num">—</td><td class="note">LT Jan–Jul +30%</td></tr>
+  <tr><td>2026e</td><td class="num">~1,200–1,300</td><td class="num">—</td><td class="note">estimate</td></tr>
+  </tbody></table></div>
+  <div class="card"><h3>Segments &amp; seasonality</h3>
   <table><tbody>
-  <tr><td>Palanga — all apartments (broad avg)</td><td class="num">~2,950–3,300</td></tr>
-  <tr><td>North-central prestige (Naglio, Kastyčio, Vytauto, S. Nėries)</td><td class="num">~4,809</td></tr>
-  <tr style="background:#fffdf5"><td><b>South-centre incl. S. Dariaus ir S. Girėno</b> (Meilės, Gedimino, Birutės, Daukanto)</td><td class="num"><b>~5,965</b></td></tr>
-  <tr><td><b>New prestige projects, best locations</b></td><td class="num"><b>10,000+</b></td></tr>
+  <tr><td>Primary (developer)</td><td class="num">~350–400/yr</td><td class="note">€3–4.5k; premium 5k+</td></tr>
+  <tr><td>Recent-build resale (2020+)</td><td class="num">~200–300/yr</td><td class="note">near-primary, furnished</td></tr>
+  <tr><td>Older secondary stock</td><td class="num">~500–600/yr</td><td class="note">€1.5–3k/m²</td></tr>
   </tbody></table>
-  <div class="callout" style="margin-top:12px"><b>Key for Vyturys:</b> your street sits in the <b>higher-priced southern-centre</b> (~€5,965/m² even in the general/older stock), and the market explicitly pays <b>€10k+/m² for new prestige product</b> here. A genuine luxury scheme should be anchored to the <b>top projects (Viešnagė, Vandens formos, Sensu) and this €10k prestige signal</b> — not to zone averages.</div></div>
+  <div class="callout warn" style="margin-top:12px">Strong <b>seasonality</b> (coastal winter occupancy −50%) and a <b>~3-year overhang</b> of unsold stock mean <b>differentiation, not price-cutting, drives pace</b>.</div></div>
 </div>
-<p class="note" style="margin-top:10px"><b>Data caveat:</b> all new-build €/m² are <b>asking/marketing</b> figures from developer sites &amp; citify — treat as list, not achieved, prices. Secondary figures are <b>directional broker/market commentary</b>, not audited transactions. The authoritative source for <b>actual sold prices</b> is Registrų centras (paid data) — recommended for a firm pricing case.</p>
 
-<!-- ZONE MAP -->
-<div class="eyebrow" id="s3">03 · Where the market is</div>
-<h2>Five zones, north to south</h2>
-<p class="lead">The coast runs north–south; product, density and price change sharply along it. The schematic places each zone against the sea (left) with its average price and sell-through. The Vyturys site sits at the centre↔Birutė transition — beside the market's best-performing, thinnest-supply premium band.</p>
+<!-- 2 PRICES -->
+<div class="eyebrow">02 · Prices</div>
+<h2>What the competition asks — and sells</h2>
+<p class="lead">High price doesn’t block absorption when location + content justify it (Nativo, Sensu, Vanagupės pušys); low price doesn’t rescue commodity product (Takas, Solus, Ritmai 2).</p>
 <div class="grid g2">
-  <div class="card" style="padding:10px">
-  <svg viewBox="0 0 420 560" width="100%" style="max-height:560px" font-family="inherit">
-    <defs><linearGradient id="seaG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9fd2e0"/><stop offset="1" stop-color="#d7ecf2"/></linearGradient></defs>
-    <rect x="0" y="0" width="70" height="560" fill="url(#seaG)"/>
-    <text x="14" y="300" fill="#2b7a90" font-size="12" font-weight="700" transform="rotate(-90 14,300)">BALTIC SEA · beach</text>
-    <rect x="70" y="0" width="350" height="560" fill="#eef3ee"/>
-    <g><rect x="70" y="0" width="350" height="86" fill="#2c7fb8" opacity=".14"/><rect x="70" y="0" width="6" height="86" fill="#2c7fb8"/>
-      <text x="86" y="26" font-size="14" font-weight="800" fill="#1b3b52">Monciškės</text>
-      <text x="86" y="45" font-size="11.5" fill="#3a4a57">~5 km N · resort + SPA · 1 project</text>
-      <text x="86" y="65" font-size="12.5" font-weight="700" fill="#14364a">€5,190–5,900/m² · ~75% sold</text>
-      <text x="86" y="80" font-size="10.5" fill="#5b6b7a">Nativo Resort — 149 units, gated 2 ha</text></g>
-    <g><rect x="70" y="86" width="350" height="150" fill="#41b6c4" opacity=".16"/><rect x="70" y="86" width="6" height="150" fill="#41b6c4"/>
-      <text x="86" y="112" font-size="14" font-weight="800" fill="#124b52">Kunigiškiai</text>
-      <text x="86" y="131" font-size="11.5" fill="#3a4a57">~4 km N · pine forest · low-rise · 15 projects</text>
-      <text x="86" y="151" font-size="12.5" font-weight="700" fill="#0f3b40">€2,227–4,990/m² · ~37% sold</text>
-      <text x="86" y="169" font-size="10.5" fill="#5b6b7a">775 units · intensity ~0.36 · apartments &amp; kotedžai</text>
-      <text x="86" y="186" font-size="10.5" fill="#5b6b7a">Ritmai · Futuristai · Jūros Natos · Takas · Green Eden</text>
-      <text x="86" y="210" font-size="10.5" font-style="italic" fill="#a2401f">▲ Largest pipeline &amp; slowest absorption</text></g>
-    <g><rect x="70" y="236" width="350" height="120" fill="#7fcdbb" opacity=".28"/><rect x="70" y="236" width="6" height="120" fill="#7fcdbb"/>
-      <text x="86" y="262" font-size="14" font-weight="800" fill="#0a3b33">Vanagupė</text>
-      <text x="86" y="281" font-size="11.5" fill="#3a4a57">N-central · established resort belt · 9 projects</text>
-      <text x="86" y="301" font-size="12.5" font-weight="700" fill="#0a3b33">€3,000–8,915/m² · ~47% sold</text>
-      <text x="86" y="319" font-size="10.5" fill="#5b6b7a">687 units · intensity ~0.84 · poilsio apartamentai</text>
-      <text x="86" y="336" font-size="10.5" fill="#5b6b7a">Sensoria · Norai · Solus · Vila Verde · Vanag. pušys</text></g>
-    <g><rect x="70" y="356" width="350" height="120" fill="#e08a1e" opacity=".20"/><rect x="70" y="356" width="6" height="120" fill="#e08a1e"/>
-      <text x="86" y="382" font-size="14" font-weight="800" fill="#7a4b0a">Centras (core)</text>
-      <text x="86" y="401" font-size="11.5" fill="#3a4a57">town centre · Vytauto / J. Simpsono / Daukanto · 11 proj.</text>
-      <text x="86" y="421" font-size="12.5" font-weight="700" fill="#7a4b0a">€3,009–12,000/m² · ~48% sold</text>
-      <text x="86" y="439" font-size="10.5" fill="#5b6b7a">555 units · widest spread — budget → ultra-lux</text>
-      <text x="86" y="456" font-size="10.5" fill="#5b6b7a">Vandens formos · Palangos ašis · Viešnagė · Trio</text></g>
-    <g><rect x="70" y="476" width="350" height="84" fill="#d7301f" opacity=".16"/><rect x="70" y="476" width="6" height="84" fill="#d7301f"/>
-      <text x="86" y="502" font-size="14" font-weight="800" fill="#7a140a">Pietūs · Birutės parkas</text>
-      <text x="86" y="521" font-size="11.5" fill="#3a4a57">south · park + sea · premium · only 2 projects</text>
-      <text x="86" y="541" font-size="12.5" font-weight="700" fill="#7a140a">€5,763–7,719/m² · ~83% sold</text>
-      <text x="86" y="556" font-size="10.5" fill="#5b6b7a">Sensu · Melno — scarce, fast-selling premium</text></g>
-    <g transform="translate(298,468)">
-      <polygon points="0,-13 4,-4 14,-4 6,2 9,12 0,6 -9,12 -6,2 -14,-4 -4,-4" fill="#ffd21e" stroke="#7a140a" stroke-width="1.4"/>
-      <rect x="16" y="-10" width="102" height="34" rx="6" fill="#fff" stroke="#7a140a"/>
-      <text x="22" y="3" font-size="11" font-weight="800" fill="#7a140a">VYTURYS site</text>
-      <text x="22" y="16" font-size="9.5" fill="#5b6b7a">centre ↔ Birutė edge</text></g>
-  </svg></div>
-  <div class="card">
-    <h3>Zone deep-dive</h3>
-    <table><thead><tr><th>Zone</th><th>Product / character</th><th class="num">€/m²</th><th class="num">Sold</th></tr></thead>
-    <tbody>
-      <tr><td><span class="pill z1">Monciškės</span></td><td>Single large resort + SPA, 400 m to sea</td><td class="num">5,190–5,900</td><td class="num">75%</td></tr>
-      <tr><td><span class="pill z2">Kunigiškiai</span></td><td>Low-rise forest apartments &amp; kotedžai; amenity-heavy</td><td class="num">2,227–4,990</td><td class="num">~37%</td></tr>
-      <tr><td><span class="pill z3">Vanagupė</span></td><td>Denser poilsio apartamentai near sea &amp; pine; broad range</td><td class="num">3,000–8,915</td><td class="num">~47%</td></tr>
-      <tr><td><span class="pill z4">Centras</span></td><td>Town-centre daugiabučiai; budget to ultra-luxury</td><td class="num">3,009–12,000</td><td class="num">~48%</td></tr>
-      <tr><td><span class="pill z5">Pietūs·Birutė</span></td><td>Premium park+sea; very low supply; fastest absorption</td><td class="num">5,763–7,719</td><td class="num">~83%</td></tr>
-    </tbody></table>
-    <div class="callout" style="margin-top:14px">The <b>south/Birutė band is the best performer and the thinnest supply</b> — exactly where Vyturys sits. Premium product with real location and finish clears; forest commodity product does not.</div>
-  </div>
-</div>
-
-<!-- ABSORPTION -->
-<div class="eyebrow" id="s4">04 · Pricing &amp; absorption</div>
-<h2>What sells — and what stalls</h2>
-<p class="lead">Sell-through for projects that publish enough data (by unit count, per citify). Colour = zone. Premium, scarce, well-located, amenity-rich schemes clear; large commodity blocks in the forest belt sit.</p>
-<div class="grid g2">
-  <div class="card"><h3>Sell-through by project</h3><div class="chartbox tall"><canvas id="soldChart"></canvas></div></div>
-  <div class="card"><h3>Price vs. absorption</h3><div class="chartbox tall"><canvas id="scatterChart"></canvas></div>
-  <p class="note" style="margin-top:8px">Dot = project: x = mid €/m², y = % sold, bubble ∝ units. High price does <b>not</b> hurt absorption when location &amp; product justify it (top-right: Sensu, Nativo, Vanagupės pušys).</p></div>
-</div>
-
-<!-- SELLING POINTS -->
-<div class="eyebrow" id="s5">05 · How developers differentiate</div>
-<h2>The selling-point playbook</h2>
-<p class="lead">From the leading schemes' public material. Wellness, turnkey furnishing, premium materials/architecture and energy tech are the recurring levers — the winners stack several at once.</p>
-<div class="card" style="overflow-x:auto">
-<table class="matrix"><thead><tr><th>Project</th><th>Wellness / SPA · pools</th><th>Turnkey furnished</th><th>Materials / architecture</th><th>Smart-home · A++ · geothermal</th><th>Location hook</th></tr></thead>
-<tbody>
-<tr><td><b>Vandens formos</b> <span class="pill z4">Centras</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td>centre, concierge</td></tr>
-<tr><td><b>Sensu</b> <span class="pill z5">Birutė</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td>1 min pine · 5 min beach</td></tr>
-<tr><td><b>Nativo</b> <span class="pill z1">Monciškės</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td>resort · 400 m to sea</td></tr>
-<tr><td><b>Ritmai</b> <span class="pill z2">Kunigiškiai</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot mid">◐</span></td><td>pools · padel · tennis</td></tr>
-<tr><td><b>Melno Rezidencija</b> <span class="pill z5">Birutė</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot mid">◐</span></td><td>SPA guest-house · park</td></tr>
-<tr><td><b>Vila Verde</b> <span class="pill z3">Vanagupė</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot mid">◐</span></td><td>boutique · pine</td></tr>
-<tr style="background:#fffdf5"><td><b>Viešnagė ⭐</b> <span class="pill z4">Centras</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td><b>Palanga's top-luxury benchmark</b> — large 47–126 m² full-finish units, LUMONT</td></tr>
-<tr><td><b>Green Eden</b> <span class="pill z2">Kunigiškiai</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot mid">◐</span></td><td>rooftop pool · orangery · gated</td></tr>
-<tr><td><b>Palangos ašis</b> <span class="pill z4">Centras</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot lo">○</span></td><td>centre · location-led (84% sold)</td></tr>
-</tbody></table>
-<p class="note" style="margin-top:8px"><span class="dot hi">●</span> signature &nbsp; <span class="dot mid">◐</span> present &nbsp; <span class="dot lo">○</span> minimal. Interpreted from public project material. <b>Note the contrast:</b> Palangos ašis cleared 84% on <b>central location + price</b> with almost no amenity story — while the top of the market stacks several levers. <b>⭐ Viešnagė is Palanga's luxury quality benchmark</b> (full-finish, large units, LUMONT) and, together with Vandens formos and Sensu, sets the standard a Vyturys scheme should target. Being <b>farther from the beach</b>, Vyturys should compete on the <b>stacked-lever, top-quality end</b> (finish + wellness amenity + brand), not on location alone.</p>
-</div>
-
-<!-- TRENDS -->
-<div class="eyebrow" id="s6">06 · Trends to build with</div>
-<h2>Where the market is heading</h2>
-<div class="grid g2">
-  <div class="card"><h3>① From "apartment" to "resort product"</h3><p class="note">The centre of gravity is <b>recreational (poilsio) apartments &amp; aparthotels</b> — furnished, amenity-served, often managed for rental — for second-home &amp; investor buyers chasing summer yield.</p></div>
-  <div class="card"><h3>② Wellness as the differentiator</h3><p class="note">An <b>amenity arms race</b> (SPA, pools, padel, gyms). Below a certain scale a full SPA is uneconomic — an advantage for a <b>resort-scale scheme that can afford a signature one</b>.</p></div>
-  <div class="card"><h3>③ Price is stratifying, not converging</h3><p class="note">The gap between forest-commodity (€2–4k) and centre/park-premium (€6–12k) is <b>widening</b>. Undifferentiated mid-market product in over-supplied zones carries the absorption risk.</p></div>
-  <div class="card"><h3>④ Branded &amp; serviced is rising in the Baltics</h3><p class="note">International brands are expanding; Baltic branded-hotel occupancy reached <b>~74.9%</b> in 2025. A <b>branded / serviced-residence</b> angle is increasingly credible and commands a premium.</p></div>
-</div>
-
-<!-- EXTERNAL -->
-<div class="eyebrow" id="s7">07 · External context &amp; the hotel / SPA market</div>
-<h2>The demand backdrop</h2>
-<p class="lead">Beyond the project data, the wider market supports a premium, wellness-led, year-round concept.</p>
-<div class="grid g4">
-  <div class="card kpi"><div class="n">+25–40%</div><div class="l">Palanga luxury prices, ~5 yrs</div><div class="s">coastal is high-growth, volatile</div></div>
-  <div class="card kpi"><div class="n">74.9%</div><div class="l">Baltic branded-hotel occupancy '25</div><div class="s">+2.6 pp, rising</div></div>
-  <div class="card kpi"><div class="n">+15%</div><div class="l">LT domestic overnights vs 2019</div><div class="s">strong domestic demand</div></div>
-  <div class="card kpi"><div class="n">~7%+</div><div class="l">Typical Baltic property yields</div><div class="s">supports rental-pool sale</div></div>
-</div>
-<div class="grid g2" style="margin-top:16px">
-  <div class="card"><h3>Existing wellness / hospitality supply</h3><p class="note">Palanga already proves the wellness-resort model. The major branded players sit mostly <b>north</b> and downtown — which <i>suggests</i> a centre-south gap, <b>but this list is not exhaustive</b> and the hotel/SPA market needs its own study (see §10 data-gap note):</p>
-  <table style="margin-top:8px"><tbody>
-  <tr><td><b>Mercure Palanga Vanagupė</b></td><td class="note">5★ resort, 98 rooms, large multi-pool SPA (Accor brand)</td></tr>
-  <tr><td><b>Amberton Green</b></td><td class="note">4★ aparthotel, 58 suites, private SPA — condo-hotel proof point</td></tr>
-  <tr><td><b>Mana Suites &amp; Sea SPA</b></td><td class="note">boutique sea-SPA hotel</td></tr>
-  <tr><td><b>Palanga Life Balance SPA</b></td><td class="note">wellness hotel</td></tr>
-  </tbody></table></div>
-  <div class="card"><h3>Why this matters for the concept</h3>
-  <div class="callout">Palanga is a <b>designated health-resort town</b> with strong but <b>highly seasonal</b> demand. The proven appetite for branded wellness + aparthotels, rising branded occupancy, healthy yields and fast-growing coastal prices all point the same way: a <b>year-round, wellness-anchored, partly-serviced</b> product is both differentiated and defensible. The residential side of the centre-south is clearly thin; the hotel/SPA side is a hypothesis to verify.</div></div>
-</div>
-
-<h2 style="margin-top:26px">Palanga's SPA-hotel supply — mature, not empty</h2>
-<p class="lead">Filling the earlier data gap: Palanga is a long-standing <b>health &amp; SPA resort</b> with a deep bench of wellness hotels — several large and 5★, and one big 5★ SPA hotel <b>in the south, next to the Vyturys site</b>. The hospitality side is <b>not</b> under-served.</p>
-<div class="card" style="overflow-x:auto">
-<table><thead><tr><th>SPA / wellness hotel</th><th>Class</th><th class="num">~Rooms</th><th>Zone</th><th>Wellness</th></tr></thead><tbody>
-<tr style="background:#fdeeee"><td><b>Palanga Life Balance SPA</b> — Birutės al. 60</td><td>5★</td><td class="num">~150</td><td><span class="pill z5">South·Birutė</span></td><td>2 indoor + outdoor pools, SPA</td></tr>
-<tr><td><b>Gradiali Wellness &amp; SPA</b> — Vanagupės 15</td><td>4★</td><td class="num">~162</td><td><span class="pill z3">Vanagupė</span></td><td>pool, rehab clinic, 100+ procedures</td></tr>
-<tr><td><b>Mercure Palanga Vanagupė</b> (Accor)</td><td>5★</td><td class="num">98</td><td><span class="pill z3">Vanagupė</span></td><td>multi-pool SPA, conference</td></tr>
-<tr><td><b>Palanga SPA / Spa Luxury / Amsterdam Plaza</b></td><td>5★</td><td class="num">~70–90</td><td><span class="pill z4">Centras</span></td><td>health club, balneotherapy</td></tr>
-<tr><td><b>Gabija Spa &amp; Conferences · Grand Baltic Dunes</b></td><td>4★</td><td class="num">~80–120</td><td><span class="pill z4">Centras</span></td><td>sauna, wellness, MICE</td></tr>
-<tr><td><b>Amberton Green Apartments</b></td><td>4★ aparthotel</td><td class="num">58</td><td><span class="pill z4">Centras</span></td><td>private SPA — condo-hotel model</td></tr>
-</tbody></table>
-<p class="note" style="margin-top:8px">Room counts approximate (aggregator data), for scale not precision. Many incumbents are <b>medical / sanatorium-rooted</b> (rehab, balneotherapy, mineral water) — Palanga's SPA heritage.</p>
-</div>
-<div class="callout warn" style="margin-top:14px;border-left:4px solid var(--z5);background:#fdeeee"><b>This changes the hotel call.</b> The SPA-hotel market is <b>mature and competitive</b> — and a large 5★ SPA hotel (Life Balance) already sits in the south by the site. A big <b>operated</b> wellness hotel would fight established, larger, often medical incumbents in a highly seasonal market — high risk and not where the gap is. <b>The scarcity is in premium apartments for sale, not hospitality.</b> So the revised lean: <b>keep residential as the core; deliver wellness as a residents'/guest amenity + a small, rental-managed aparthotel</b>, positioned as <b>modern lifestyle/design wellness</b> (distinct from the medical incumbents) — <b>not a market-facing hotel</b>. On the A–B–C spectrum below, lean <b>A/B, not C</b>. A full operated hotel only with a committed operator/brand and a clear niche. Life Balance next door is both competition <i>and</i> proof that premium wellness demand exists here.</div>
-
-<!-- SITE + CAPACITY -->
-<div class="eyebrow" id="s8">08 · The site &amp; the opportunity</div>
-<h2>What the envelope makes possible</h2>
-<p class="lead">This is a <b>resort-scale</b> development — the client's working concept (~17,131 m²) is already larger than Nativo (12,850 m²) and among the biggest in town. That scale is what makes a <b>signature wellness + amenity</b> component economic (a boutique plot cannot carry it). The strategic question is the split between high-margin sell-now residential and a wellness/amenity layer that lifts price, absorption and year-round appeal. <span class="note">(Final buildable area to be confirmed — figures here are indicative.)</span></p>
-<div class="card" style="overflow-x:auto;margin-bottom:16px">
-<h3>Nearest competitive set (centre-south premium)</h3>
-<table><thead><tr><th>Comparable</th><th>Zone</th><th class="num">€/m²</th><th class="num">Units</th><th class="num">Sold</th><th>Signal</th></tr></thead>
-<tbody>
-<tr><td><b>Sensu</b></td><td><span class="pill z5">Birutė</span></td><td class="num">5,763–7,719</td><td class="num">47</td><td class="num">83%</td><td>Direct benchmark — full-finish, geothermal, park-side</td></tr>
-<tr><td><b>Melno Rezidencija</b></td><td><span class="pill z5">Birutė</span></td><td class="num">n/d</td><td class="num">75</td><td class="num">n/d</td><td>SPA guest-house model near park</td></tr>
-<tr style="background:#fffdf5"><td><b>Viešnagė ⭐</b></td><td><span class="pill z4">Centras</span></td><td class="num">n/d</td><td class="num">39</td><td class="num">n/d</td><td><b>Palanga's top-luxury benchmark</b> — full apdaila, large 47–126 m² units (LUMONT); price not public</td></tr>
-<tr><td><b>Vandens formos</b></td><td><span class="pill z4">Centras</span></td><td class="num">7,800–12,000</td><td class="num">33</td><td class="num">n/d</td><td>Ultra-luxury ceiling — materials &amp; concierge</td></tr>
-<tr><td><b>Vanagupės pušys</b></td><td><span class="pill z3">Vanagupė</span></td><td class="num">3,552–6,799</td><td class="num">52</td><td class="num">79%</td><td>Completed mid-premium that cleared well</td></tr>
-</tbody></table>
-<p class="note" style="margin-top:8px"><b>€/m² are asking / marketing prices, not achieved transaction prices</b> (developer sites &amp; citify). "n/d" = not publicly disclosed — Viešnagė and Melno don't publish per-m² prices. Actual sold prices to be confirmed from Registrų centras.</p>
-</div>
-
-<h2 style="margin-top:26px">Distance to the sea — how much does it matter?</h2>
-<p class="lead">A fair concern: Vyturys is <b>farther from the beach (~1.2–1.4 km, a ~15–20 min walk)</b> than most premium projects. The data says this is a <b>real but manageable</b> factor — and one your concept is already built to answer.</p>
-<div class="grid g2">
-  <div class="card"><h3>Approx. walk to the beach — by cluster</h3>
-  <table><thead><tr><th>Cluster</th><th class="num">~to beach</th><th>Sells on…</th></tr></thead><tbody>
-  <tr><td>Vanagupė belt</td><td class="num">0.3–0.6 km</td><td class="note">sea + pine</td></tr>
-  <tr><td>Central Daukanto / Simpsono</td><td class="num">0.5–0.7 km</td><td class="note">centre + beach</td></tr>
-  <tr><td>Sensu / Melno (south, park-side)</td><td class="num">0.6–0.8 km</td><td class="note">park + pine + finish</td></tr>
-  <tr style="background:#fff7ec"><td><b>Vyturys</b></td><td class="num"><b>1.2–1.4 km</b></td><td class="note"><b>centre + park + amenity</b></td></tr>
-  <tr><td>Kunigiškiai forest belt</td><td class="num">0.8–1.5 km</td><td class="note">forest + amenities + price</td></tr>
+  <div class="card"><h3>Price vs. sold-through</h3><div class="chartbox"><canvas id="scatter"></canvas></div>
+  <p class="note" style="margin-top:6px">x = mid asking €/m², y = % sold, bubble ∝ units. Asking prices, not achieved.</p></div>
+  <div class="card"><h3>Ceilings, not averages</h3>
+  <table><thead><tr><th>Zone / segment</th><th class="num">€/m²</th></tr></thead><tbody>
+  <tr><td>Broad Palanga (all stock)</td><td class="num">~2,950–3,300</td></tr>
+  <tr><td>North-central prestige</td><td class="num">~4,809</td></tr>
+  <tr style="background:#f6f2ea"><td><b>South-centre (Vyturys street &amp; Birutė)</b></td><td class="num"><b>~5,965</b></td></tr>
+  <tr><td>Central flagship ceiling (Vandens formos)</td><td class="num">7,800–12,000</td></tr>
+  <tr><td>New prestige — buyers’ stated willingness</td><td class="num">10,000+</td></tr>
   </tbody></table>
-  <p class="note" style="margin-top:8px">Straight-line / approx. walking estimates from coordinates &amp; street layout — indicative, not surveyed.</p></div>
-  <div class="card"><h3>What the market actually shows</h3><ul style="font-size:13px;padding-left:18px;margin:0">
-  <li><b>Almost nothing in Palanga is truly seafront</b> — a protected dune/park belt keeps even "premium" schemes 0.4–1 km inland. Sea <i>distance</i>, not sea <i>view</i>, is what varies.</li>
-  <li><b>Absorption tracks centrality, product, amenity, greenery &amp; brand — not raw beach distance.</b> Palangos ašis cleared 84% at ~0.6 km on location + price; the Kunigiškiai belt sits ~1 km+ from the sea yet keeps selling on forest + amenities.</li>
-  <li>Vyturys is <b>farther than the premium seaside clusters but no farther than the popular forest belt</b> — and it <b>beats them all on town-centre proximity</b> (~0.5 km to the centre, pedestrian street &amp; Birutės park approach).</li>
+  <div class="callout" style="margin-top:12px">The premium <b>ceiling is central</b> (“Birutė highest” was one project, Sensu). But €10k+ is a thin, aspirational signal — <b>absorption-based pricing is lower</b> (§04). Hard numbers need a Registrų centras extract.</div></div>
+</div>
+<div class="card" style="margin-top:14px;overflow-x:auto">
+<h3>Competitive set (asking €/m², sold-through)</h3>
+<table><thead><tr><th>Project</th><th>Vieta</th><th class="num">Vnt.</th><th class="num">€/m²</th><th class="num">Parduota</th><th>Signal</th></tr></thead><tbody>
+<tr><td><b>Vandens formos</b></td><td>J. Simpsono 17</td><td class="num">33</td><td class="num">7,800–12,000</td><td class="num">n/d</td><td class="note">ultra-lux ceiling</td></tr>
+<tr style="background:#f6f2ea"><td><b>Viešnagė ⭐</b></td><td>J. Simpsono 21</td><td class="num">39</td><td class="num">n/d</td><td class="num">n/d</td><td class="note">Palanga’s luxury benchmark (LUMONT)</td></tr>
+<tr><td><b>Sensu</b></td><td>Vytauto 2</td><td class="num">47</td><td class="num">5,763–7,719</td><td class="num win">83%</td><td class="note">Birutė + full finish + Lumont</td></tr>
+<tr><td><b>Nativo Resort &amp; SPA</b></td><td>Monciškės</td><td class="num">149</td><td class="num">5,190–5,900</td><td class="num win">75%</td><td class="note">SPA proves 5k+ works far from centre</td></tr>
+<tr><td><b>Vila Verde</b></td><td>Vanagupės 52</td><td class="num">18</td><td class="num">6,536–8,915</td><td class="num fail">0%</td><td class="note">warning: finish alone ≠ &gt;€6k</td></tr>
+<tr><td><b>Palangos ašis</b></td><td>S. Daukanto 8,10</td><td class="num">123</td><td class="num">3,733–6,070</td><td class="num win">84%</td><td class="note">central, location-led</td></tr>
+<tr><td><b>Vanagupės pušys</b></td><td>Vanagupės 13B</td><td class="num">52</td><td class="num">3,552–6,799</td><td class="num win">79%</td><td class="note">completed, cleared well</td></tr>
+<tr><td><b>Sensoria</b></td><td>Vanagupės 36A</td><td class="num">72</td><td class="num">3,000–4,624</td><td class="num win">81%</td><td class="note">poilsio apartamentai</td></tr>
+<tr><td><b>Solus terasos</b></td><td>Palanga</td><td class="num">160</td><td class="num">3,800–4,400</td><td class="num fail">20%</td><td class="note">volume, thin content → slow</td></tr>
+<tr><td><b>Takas į jūrą 4</b></td><td>Kunigiškiai</td><td class="num">126</td><td class="num">2,227–3,865</td><td class="num fail">9%</td><td class="note">low price ≠ pace</td></tr>
+</tbody></table>
+<p class="note" style="margin-top:6px">Selected from ~38 tracked projects (full list in Projektai Palanga.xlsx).</p>
+</div>
+
+<!-- 3 SELLING POINTS -->
+<div class="eyebrow">03 · Key selling points</div>
+<h2>What makes buyers commit</h2>
+<p class="lead">Buyers: ~35% Vilnius, ~25% Kaunas, ~20% locals; 30–40% investment / “second-home + rent”. The rule the data keeps repeating: <b>infrastructure wins over geography</b>.</p>
+<div class="grid g2">
+  <div class="card"><h3 class="win">✓ What sells</h3><ul class="tight">
+  <li><b>On-site infrastructure</b> — pools, saunas, sports, gated grounds, underground parking (now the premium standard)</li>
+  <li><b>Full finish</b> + furniture — the second-home / rental buyer wants turnkey</li>
+  <li><b>Terraces &amp; balconies</b> — units with them sell first, at a premium</li>
+  <li><b>Developer name &amp; coastal track record</b> — lowers buyer risk (Lumont, Orner)</li>
+  <li><b>Geothermal / low running costs</b>; compact, efficient layouts (accessible ticket)</li>
+  <li><b>Year-round services</b> that lift off-season occupancy — the resort/SPA formula</li>
   </ul></div>
-</div>
-<div class="callout" style="margin-top:14px"><b>Implication — it reinforces the wellness-resort direction.</b> If you can't sell "steps to the beach," you must <b>create your own destination</b>: the SPA, pools and landscaped pine campus become the <b>everyday amenity that substitutes for the sea</b> — exactly what your 4,846 m² SPA+hotel + green-courtyard scheme already does. Practical moves: position it as a <b>"town-centre wellness retreat in the pines"</b> (not beachfront); add <b>beach-access services</b> (bikes, shuttle, a lounger/cabana partnership); and tie the <b>top price tier to terraces, penthouses &amp; SPA-linked units</b> rather than a sea view you don't have. Net: distance caps the very top "sea-view" ceiling, but centrality + a genuine wellness destination support a strong, defensible premium.</div>
-
-<!-- CONCEPT OPTIONS -->
-<div class="eyebrow" id="s9">09 · Concept options</div>
-<h2>Three ways to use the site</h2>
-<p class="lead">Three coherent directions, from simplest/fastest to most differentiated/highest-ceiling. Scored on the levers that matter for "attractive <b>and</b> profitable sell-out".</p>
-<div class="grid g3">
-  <div class="concept"><div class="top" style="background:#7fcdbb;color:#0a3b33"><b>Concept A</b><br>Premium residential + private wellness club</div>
-  <div class="bd"><p class="note">The whole envelope as <b>for-sale premium apartments</b> with a residents-only SPA/pool club. Maximum sellable area, simplest to deliver, fastest capital return.</p>
-  <ul><li>+ Highest sellable m², simplest ops</li><li>+ Fast, clean capital recovery</li><li>– No brand uplift, no year-round animation</li><li>– Competes on product alone vs Sensu et al.</li></ul></div></div>
-  <div class="concept"><div class="top" style="background:#e08a1e"><b>Concept B</b><br>Aparthotel-led "condo-hotel"</div>
-  <div class="bd"><p class="note">Mostly <b>furnished poilsio units sold to investors</b> + professional rental-pool management + reception, wellness &amp; F&amp;B. Hospitality-lite; validated locally by Amberton Green.</p>
-  <ul><li>+ All/most m² sellable → fast, complete sell-out</li><li>+ Strong investor appeal (hands-off yield)</li><li>+ Some year-round animation &amp; services</li><li>– Moderate (not top) price premium</li></ul></div></div>
-  <div class="concept" style="outline:2px solid var(--esami)"><div class="top" style="background:#1b9e77"><b>Concept C — recommended</b><br>Wellness resort + serviced residences</div>
-  <div class="bd"><p class="note">A <b>signature SPA + boutique wellness hotel/aparthotel (~70–90 keys)</b> anchoring <b>premium serviced residences</b>. Hotel/brand lifts residence price &amp; absorption and defeats seasonality; residences are the profit engine.</p>
-  <ul><li>+ Highest attractiveness &amp; price ceiling</li><li>+ Year-round demand → beats seasonality</li><li>+ Hotel exit optionality (operator or condo)</li><li>– More complex; needs an operator/brand</li></ul></div></div>
-</div>
-<div class="card" style="margin-top:16px;overflow-x:auto">
-<table class="matrix"><thead><tr><th>Scoring</th><th>Guest/buyer attractiveness</th><th>Achievable price</th><th>Speed / certainty of sell-out</th><th>Delivery simplicity</th><th>Profit ceiling</th><th>Seasonality resilience</th></tr></thead>
-<tbody>
-<tr><td><b>A · Residential + club</b></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot lo">○</span></td></tr>
-<tr><td><b>B · Aparthotel / condo-hotel</b></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot mid">◐</span></td></tr>
-<tr style="background:#f2faf7"><td><b>C · Wellness resort + serviced residences</b></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot mid">◐</span></td><td class="c"><span class="dot lo">○</span></td><td class="c"><span class="dot hi">●</span></td><td class="c"><span class="dot hi">●</span></td></tr>
-</tbody></table>
-<p class="note" style="margin-top:8px">Given the mature SPA-hotel market (§07), the pragmatic pick leans <b>B</b> — a residential-led scheme with a <b>wellness amenity + small rental-managed aparthotel</b> (keys condo-sellable), capturing most of C's brand/animation premium and its distance-offsetting "destination" effect, but <b>without</b> the risk of an operated hotel competing with Palanga's incumbents. Go to a full operated hotel (C) only if a committed operator/brand and a clear niche justify it.</p>
+  <div class="card"><h3 class="fail">✗ What stalls</h3><ul class="tight">
+  <li><b>Vila Verde (0%)</b> — full finish + good street, but no distinctive content, above ~€6k/m²</li>
+  <li><b>Volume without infrastructure</b> — Solus 20%, Takas 9%, Ritmai 2 14%, even at €2.2–4.4k</li>
+  <li><b>Low price as the only lever</b> — doesn’t guarantee pace</li>
+  <li><b>Big single launches</b> — heavy inventory competes with itself &amp; the ~2,300-unit pipeline</li>
+  </ul>
+  <div class="callout" style="margin-top:12px"><b>Implication:</b> content (wellness, services, finish, terraces, brand) is what Vyturys must lead with — and it’s exactly what the distance from the sea requires.</div></div>
 </div>
 
-<!-- RECOMMENDED CONCEPT -->
-<div class="eyebrow" id="s10">10 · Recommended concept in detail</div>
-<h2>A year-round wellness resort with serviced residences</h2>
-<p class="lead">The organising idea: a <b>wellness destination</b> — signature SPA, pools, F&amp;B and a boutique hotel — that gives the address year-round life and a brand, wrapped around <b>premium serviced residences that carry the profit</b>. It leans into Palanga's identity as a health-resort town and answers both its seasonality weakness and this site's distance from the beach.</p>
-<div class="callout" style="margin-bottom:16px"><b>Your initial concept already lands here.</b> The March 2026 scheme reads <b>Apartments 12,285 m² + SPA &amp; Hotel 4,846 m² = 17,131 m²</b> across ~6 low-rise timber/bronze buildings and an SPA+hotel block in a landscaped pine campus — i.e. an <b>SPA/amenity-anchored residential resort</b>, the same direction the market data points to. (Areas indicative; final program to be confirmed.)</div>
+<!-- 4 VYTURYS -->
+<div class="eyebrow">04 · Vyturys — concept, sales &amp; pricing</div>
+<h2>Evaluating the project</h2>
+<p class="lead">Client concept (Mar 2026): ~17,131 m² — <b>12,285 m² apartments + 4,846 m² SPA/hotel</b>, ~6 low-rise blocks around a landscaped SPA campus. The market data supports the direction, with three refinements.</p>
+<div class="grid g3" style="margin-bottom:14px">
+  <div class="card"><h3>Location</h3><p class="note">~1.1–1.3 km to the beach — <b>weak</b> for a “first-line” pitch, <b>strong</b> for an all-season resort: walk to centre, Birutė park, concert hall, sports arena. Nativo proves an <b>SPA compensates for distance</b>.</p></div>
+  <div class="card"><h3>Hotel / SPA</h3><p class="note">Palanga’s SPA-hotel market is <b>mature</b> (Life Balance 5★ in the south, Gradiali, Mercure). Run the 4,846 m² as a <b>residents’/guest amenity + small rental-managed aparthotel</b> — not an operated hotel vs incumbents. Skew it to <b>active/sports wellness</b> to win off-season demand.</p></div>
+  <div class="card"><h3>Unit mix</h3><p class="note">Demand is <b>compact</b>: 2-room ~35–52 m², 2–3-room ~45–70 m², terraces essential. <b>Design to ticket price</b> — small efficient units + a limited trophy tier. Don’t over-size the core.</p></div>
+</div>
 <div class="grid g2">
-  <div class="card"><h3>Space program (client's working concept)</h3>
-  <div class="stack" style="margin:6px 0 6px">
-    <div style="width:72%;background:#1b9e77">Apartments 12,285 m² · 72%</div>
-    <div style="width:28%;background:#2c7fb8">SPA + Hotel 4,846 m² · 28%</div>
-  </div>
-  <p class="note" style="margin:0 0 10px">March 2026 concept ≈ 17,131 m² (indicative — final buildable area to be confirmed). The mix can flex: more residences (sell-out) vs a deeper wellness/amenity.</p>
-  <table><thead><tr><th>Use</th><th class="num">~m²</th><th class="num">Indic. program</th><th>Role</th></tr></thead>
-  <tbody>
-  <tr><td><b>Apartments (for sale)</b></td><td class="num">12,285</td><td class="num">~180–220 units</td><td>Profit engine</td></tr>
-  <tr><td><b>SPA + hotel / aparthotel</b></td><td class="num">4,846</td><td class="num">~60–90 keys + SPA</td><td>Destination, brand, animation</td></tr>
-  <tr><td class="note" colspan="4">+ below-grade parking &amp; back-of-house. Unit mix skewed to <b>small, efficient ~28–70 m²</b> units (designed to ticket price — see below), plus a limited large terrace/penthouse &amp; SPA-linked tier. Count depends on average size &amp; density. Hotel/SPA split within the 4,846 m² to be set with an operator.</td></tr>
-  </tbody></table></div>
-  <div class="card"><h3>Indicative pricing ladder — luxury residences (€/m²)</h3>
-    <div style="font-size:13px">
-      <div style="display:flex;justify-content:space-between;margin:8px 0"><span>Entry (lower floors, std luxury finish)</span><b>~6,000–6,800</b></div>
-      <div class="bar"><span style="width:52%;background:var(--z3)"></span></div>
-      <div style="display:flex;justify-content:space-between;margin:8px 0"><span>Core (typical turnkey luxury unit)</span><b>~7,000–8,500</b></div>
-      <div class="bar"><span style="width:70%;background:var(--esami)"></span></div>
-      <div style="display:flex;justify-content:space-between;margin:8px 0"><span>Premium (top floor / terraces / SPA-linked)</span><b>~9,000–11,000+</b></div>
-      <div class="bar"><span style="width:95%;background:var(--z5)"></span></div>
-    </div>
-    <p class="note" style="margin-top:10px">Re-anchored on <b>top projects &amp; the prestige signal</b>, not zone averages: Viešnagė/Vandens formos set the luxury quality bar, the southern-centre (this street) runs ~€5,965/m² even in general stock, and the market pays <b>€10k+/m² for new prestige product here</b>. Distance from the beach shaves the very top vs a seafront scheme, but a genuine <b>Viešnagė-class</b> product supports this ladder. <b>Illustrative — validate in feasibility &amp; against Registrų centras sold data.</b></p>
-  </div>
-</div>
-<div class="card" style="margin-top:16px">
-  <h3>Unit mix &amp; ticket price — build small &amp; efficient</h3>
-  <p class="note" style="margin:0 0 10px">Palanga's investment demand runs on <b>small, efficient units</b> — the high-volume schemes start at 18–30 m² and cluster in the 40–55 m² range (Solus 18–87, Takas 21–47, Norai 24–55, Samanų 28.8–53.3, Jūros Natos 25–61). Only low-volume luxury projects (Viešnagė, Vandens formos) go large. <b>Design to ticket price, not m²</b>: at premium €/m², size drives the cheque, and that decides how deep the buyer pool is — especially for investors.</p>
-  <table><thead><tr><th>Type</th><th class="num">Size</th><th class="num">Share</th><th class="num">Ticket @ ~€7k/m²</th><th>Buyer</th></tr></thead><tbody>
-  <tr><td><b>Studio / compact 1-room</b></td><td class="num">~28–38 m²</td><td class="num">25–30%</td><td class="num">€200–265k</td><td>Investors / rental pool</td></tr>
-  <tr><td><b>Efficient 2-room</b></td><td class="num">~42–52 m²</td><td class="num">35–40%</td><td class="num">€300–365k</td><td>Core — broadest demand</td></tr>
-  <tr><td><b>3-room / small family</b></td><td class="num">~55–70 m²</td><td class="num">20–25%</td><td class="num">€385–490k</td><td>Second-home owners</td></tr>
-  <tr style="background:#fffdf5"><td><b>Premium / trophy</b> (penthouse, terrace, SPA-linked)</td><td class="num">~90–130 m²</td><td class="num">~10%</td><td class="num">€630k–1M+</td><td>Luxury owner-occupier</td></tr>
-  <tr><td class="note" colspan="5">Average ~<b>52–60 m²</b> (vs a typical mid-market ~45–55 and the luxury outliers ~80–120). <b>Trade-off:</b> smaller units mean <b>more units</b> for a given floor area (~12,285 m² ≈ ~205–220 units at this average, not ~150) — resolve either by <b>lower density</b> (fewer units, more green/amenity, premium feel) or by leaning on the <b>investor / aparthotel rental pool</b> (which absorbs small units well) plus phasing.</td></tr>
+  <div class="card"><h3>Potential sales pace <span class="note">(premium segment ~100–150/yr caps everyone)</span></h3>
+  <table><tbody>
+  <tr><td><span class="pill o">Optimistic</span> strong SPA + first-mover</td><td class="num"><b>~40–52/yr</b></td></tr>
+  <tr><td><span class="pill b">Base</span> realistic, once market shares out</td><td class="num"><b>~25–40/yr</b></td></tr>
+  <tr><td><span class="pill w">Weak</span> no real differentiation</td><td class="num">~15–30/yr</td></tr>
+  <tr><td>Benchmark — Nativo (with SPA)</td><td class="num">~55–70/yr</td></tr>
+  <tr><td>Benchmark — Sensu (boutique)</td><td class="num">~1.5–2/mo</td></tr>
   </tbody></table>
+  <div class="callout warn" style="margin-top:10px"><b>Critical view.</b> The handout’s ~40–52/yr = 30–40% of the whole premium segment — a leadership claim that holds only with a real SPA and <b>only until Futuristai (~290 units + hotel) opens 2028+</b>. Two consequences: <b>(1) get to market first</b>; <b>(2) size the scheme to what the segment can clear</b> — ~150–180 units over ~4 yrs, not the max unit count, or widen demand via the investor/aparthotel pool.</div></div>
+  <div class="card"><h3>Pricing ladder — absorption-based (€/m²)</h3>
+  <table><tbody>
+  <tr><td><b>Phase 1 launch</b> (full finish, build momentum)</td><td class="num price">5,000–5,300</td></tr>
+  <tr><td><b>Later phases</b> (with SPA operating)</td><td class="num price">5,500–6,000+</td></tr>
+  <tr><td>Trophy units (terraces, penthouse, SPA-linked)</td><td class="num price">6,500–8,000</td></tr>
+  </tbody></table>
+  <div class="callout" style="margin-top:10px"><b>€5,500 full finish = between Nativo &amp; Sensu (defensible).</b> Partial finish at that price = the “Vila Verde zone” (risky). This re-anchors <b>down</b> from earlier asking-price ceilings to what actually absorbs. Validate against Registrų centras sold data.</div></div>
 </div>
-<div class="grid g3" style="margin-top:16px">
-  <div class="card"><h3>💰 The profit logic</h3><p class="note">Residences (~12,285 m²) generate the <b>bulk of sell-out</b> and fund construction. The hotel + wellness are the <b>multiplier</b>: they lift residence €/m² and absorption, and give an <b>exit choice</b> on the keys — operate/lease to a brand, or condo-sell as aparthotel units for faster capital recovery.</p></div>
-  <div class="card"><h3>🧲 Why it's attractive</h3><p class="note">A <b>destination</b>, not just a block: signature SPA, pools and F&amp;B create year-round reasons to visit and buy, in a location scarce of <b>premium apartments for sale</b> (only Sensu/Melno) and close to centre, park and town. The <b>hotel/SPA</b> side, by contrast, is already well-supplied (§07) — so wellness here works as a <b>residents' amenity</b>, not a hotel play.</p></div>
-  <div class="card"><h3>🛡️ Why it's defensible</h3><p class="note">Beats the town's core weakness (<b>seasonality</b>) and can't be easily copied by small plots (needs this resort-scale plot). Brand + service + amenity depth build a <b>moat</b> vs the commodity pipeline.</p></div>
-</div>
-<div class="card warn" style="margin-top:16px;border-left:4px solid var(--plan);background:#fff7ec"><b>Reality checks before committing.</b> <span class="note">Secure a hotel operator/brand or a credible self-managed model early; confirm zoning/heritage limits and the residential-vs-hotel mix the permit allows; underground parking is a central-site gating item; phase the residential release to preserve scarcity (the biggest single-launch forest blocks are the slowest sellers). All figures here are indicative for strategy — commission a site-specific feasibility &amp; residual land-value study before decisions. This is not investment advice.</span></div>
-<div class="card" style="margin-top:16px;border-left:4px solid var(--z1);background:#eef5fd"><b>✔ Hotel &amp; SPA market — now analysed (see §07).</b> <span class="note">The "under-served" finding holds for <b>apartments for sale</b>, but <b>not</b> for hospitality: Palanga's SPA-hotel market is <b>mature and competitive</b>, with a large 5★ SPA hotel (Life Balance) already in the south by the site. So this scheme's 4,846 m² "SPA+hotel" is best delivered as a <b>residents'/guest wellness amenity + a small rental-managed aparthotel</b> (lean <b>A/B</b>), <b>not</b> a market-facing operated hotel competing with the incumbents. This keeps the profit in the scarce, high-margin <b>residential</b> and uses wellness to differentiate and offset the beach distance — without betting on hotel P&amp;L in a crowded, seasonal market.</span></div>
-
-<!-- SWOT -->
-<div class="eyebrow" id="s11">11 · Vyturys SWOT (with the concept)</div>
-<h2>Strategic read</h2>
-<div class="swot">
-  <div class="q S"><h4>💪 Strengths</h4><ul>
-    <li>Scarce centre-south location: walk to town, minutes to beach &amp; Birutės park</li>
-    <li>Beside the market's best-absorbing, thinnest-supply premium band (Sensu 83%)</li>
-    <li>Resort-scale plot makes a signature SPA + amenity economic</li>
-    <li>"Poilsio namai" use eases a wellness / aparthotel positioning</li></ul></div>
-  <div class="q W"><h4>⚠️ Weaknesses</h4><ul>
-    <li>Not seafront — sells on centre + park proximity, not sea view</li>
-    <li>Central density, parking &amp; heritage constraints</li>
-    <li>Higher land/build cost; premium finish required</li>
-    <li>Hotel component adds delivery &amp; operating complexity</li></ul></div>
-  <div class="q O"><h4>🚀 Opportunities</h4><ul>
-    <li>Year-round wellness destination that beats seasonality</li>
-    <li>Serviced/branded premium (~15–30%) on residences</li>
-    <li>Rental-pool / aparthotel program → investor buyers &amp; yield</li>
-    <li>Modern lifestyle-wellness niche vs Palanga's medical/sanatorium SPA incumbents</li></ul></div>
-  <div class="q T"><h4>🌩️ Threats</h4><ul>
-    <li>Large planned residential pipeline (14 schemes) → medium-term supply pressure</li>
-    <li>Mature, competitive SPA-hotel market — incl. 5★ Life Balance in the south (favours amenity/aparthotel over an operated hotel)</li>
-    <li>Seasonality &amp; rate/demand cycles on second-home buyers</li>
-    <li>Execution risk if wellness/amenity quality falls short</li></ul></div>
-</div>
-
-<!-- ROADMAP -->
-<div class="eyebrow" id="s12">12 · Roadmap</div>
-<h2>How to proceed</h2>
-<div class="card">
-  <div class="rec"><div class="r">1</div><div class="b"><b>Fix the concept &amp; mix.</b> Adopt the wellness-resort-with-serviced-residences direction; test the ~63/22/15 residential/hotel/wellness split against zoning and a residual land-value model.</div></div>
-  <div class="rec"><div class="r">2</div><div class="b"><b>Default to a managed-rental / aparthotel model, not an operated hotel.</b> Palanga's SPA-hotel market is already mature (§07), so size the hospitality piece small and differentiate the wellness as modern lifestyle/design. Only pursue a full operated hotel if a committed operator/brand and a clear niche emerge.</div></div>
-  <div class="rec"><div class="r">3</div><div class="b"><b>Design the wellness core as the hero</b> — signature SPA, pools and F&amp;B open to residents, guests and members — the year-round draw and marketing engine.</div></div>
-  <div class="rec"><div class="r">4</div><div class="b"><b>Design to ticket price, not m².</b> Skew to small, efficient ~28–70 m² units (accessible tickets = deeper buyer pool, esp. investors), with a limited large trophy tier. Avoid over-sizing the core.</div></div>
-  <div class="rec"><div class="r">5</div><div class="b"><b>Price the residences at €6.3–7.3k/m² core</b> (up to ~€9.5k premium), benchmarked to Sensu plus the serviced/branded uplift — validate in feasibility.</div></div>
-  <div class="rec"><div class="r">6</div><div class="b"><b>Phase the release</b> to preserve scarcity and de-risk absorption; keep the option to condo-sell hotel keys if capital recovery is preferred.</div></div>
-  <div class="rec"><div class="r">7</div><div class="b"><b>Commission feasibility, parking &amp; heritage/permit studies</b> before land/design commitments.</div></div>
+<div class="grid g2" style="margin-top:14px">
+  <div class="card"><h3>Key risks</h3><ul class="tight">
+  <li><b>2028+ pipeline</b> — Futuristai (~290 apts + hotel) is the closest conceptual competitor; Samanų takais 174; Solus 160</li>
+  <li><b>Running-cost sensitivity</b> — put SPA/amenity costs into a <b>rental-pool model</b>, not a fixed monthly fee that scares owners</li>
+  <li><b>Over-pricing on finish alone</b> (Vila Verde lesson) — content must justify the €/m²</li>
+  </ul></div>
+  <div class="verdict"><h3>Bottom line</h3>
+  <div class="big">A defensible ~30–40% share of Palanga’s premium segment — <b>if</b> the SPA/service content is real and you launch before Futuristai.</div>
+  <p style="font-size:12.8px;margin:0;opacity:.92">Residential-led, wellness-anchored, small efficient units, phased, ~150–180 units. Launch ~€5,000–5,300 full finish, climb to €5,500–6,000+ with the SPA live. The SPA is not a luxury add-on — it is the mechanism that overcomes the distance from the sea and the winter season, and underwrites the pace.</p></div>
 </div>
 
 <footer>
-<b>Sources &amp; method.</b> Primary: your tracked dataset (project websites &amp; citify.eu) of 38 Palanga projects. External context: Lithuania Travel / Statistics Lithuania tourism data; Colliers &amp; Hotel Management (Baltic branded-hotel occupancy &amp; development); Investropa (Palanga luxury price growth). Hotel/SPA supply: operator &amp; booking sources (Palanga Life Balance SPA – Birutės al. 60, Gradiali Wellness &amp; SPA – Vanagupės 15, Mercure Palanga Vanagupė, Palanga SPA / Spa Luxury / Amsterdam Plaza, Gabija, Grand Baltic Dunes, Amberton Green); room counts approximate. Concept program from the client's "Vyturys_plotai" drawings (Mar 2026). Zone assignment, selling-point ratings, concept scoring, the space program and pricing ladder are analytical interpretations and <b>illustrative</b> — not a valuation, guaranteed outcome, or investment advice. Sold-% is by unit count (citify "Pardavimai"), dated per project; some completed projects publish no sales data; some prices are unpublished. A site-specific feasibility &amp; residual land-value study is recommended before any decision.
-<br><br>Prepared for the Poilsio namai Vyturys development study · Palanga · 2026.
+<b>Sources.</b> Registrų centras (transaction statistics; kampas.lt for 2022–23); Citus resort-market analysis, Mar 2026 (15min.lt); CityNow / Orner primary-market review (realu.lt); citify.eu &amp; project sites; Sensu (sensupalanga.lt, structum.lt); internal Projektai Palanga.xlsx; client “Vyturys_plotai” drawings (Mar 2026). The attached internal handout represents Kenova’s own working conclusions; figures here are cross-checked and, where they differ, re-anchored to the fuller dataset (notably a more conservative sales-pace range and absorption-based pricing). Public/asking figures are indicative and differ from actual transactions — an official Registrų centras extract is recommended for firm pricing. Not investment advice. · Prepared for Kenova, 2026. Brand font Aeonik Pro shown here in the web stand-in Inter.
 </footer>
 </div>
-
 <script>
-const ZC={Kunigiškiai:'#41b6c4',Monciškės:'#2c7fb8','Vanagupė':'#7fcdbb',Centras:'#e08a1e','Pietūs–Birutė':'#d7301f'};
-Chart.defaults.font.family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";Chart.defaults.color="#5b6b7a";
-new Chart(statusChart,{type:'doughnut',data:{labels:['Under construction (17)','Planned (14)','Completed (6)','Reconstruction (1)'],datasets:[{data:[17,14,6,1],backgroundColor:['#1b9e77','#e08a1e','#2c7fb8','#9aa7b2'],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'right',labels:{boxWidth:12,font:{size:12}}}},cutout:'58%'}});
-new Chart(zonePriceChart,{type:'bar',data:{labels:['Kunigiškiai','Monciškės','Vanagupė','Centras','Pietūs–Birutė'],datasets:[{label:'avg lower €/m²',data:[3364,5190,4136,4612,5763],backgroundColor:'#9fd2c4'},{label:'avg upper €/m²',data:[4278,5900,5862,6876,7719],backgroundColor:'#1b9e77'}]},options:{plugins:{legend:{labels:{boxWidth:12}}},scales:{y:{ticks:{callback:v=>v/1000+'k'}}}}});
-const sold=[['Green Eden',93,'Kunigiškiai'],['Palangos ašis',84,'Centras'],['Sensu',83,'Pietūs–Birutė'],['Sensoria',81,'Vanagupė'],['Vanagupės pušys',79,'Vanagupė'],['Jūros Natos',76,'Kunigiškiai'],['Nativo',75,'Monciškės'],['Ritmai 1 et.',69,'Kunigiškiai'],['Palangos šilas D',65,'Centras'],['Norai',53,'Vanagupė'],['Palangos panorama',42,'Centras'],['Ritmai 3 (NOP)',22,'Kunigiškiai'],['Solus terasos',20,'Vanagupė'],['Vaivos Kasos 2',15,'Kunigiškiai'],['Ritmai 2 et.',14,'Kunigiškiai'],['Takas 4',9,'Kunigiškiai'],['Vila Verde',0,'Vanagupė'],['Infinitum II',0,'Kunigiškiai']];
-new Chart(soldChart,{type:'bar',data:{labels:sold.map(s=>s[0]),datasets:[{data:sold.map(s=>s[1]),backgroundColor:sold.map(s=>ZC[s[2]]),borderRadius:3}]},options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x+'% sold'}}},scales:{x:{max:100,ticks:{callback:v=>v+'%'}},y:{ticks:{font:{size:10.5}}}}}});
-const sc=[['Sensu',6741,83,47,'Pietūs–Birutė'],['Nativo',5545,75,149,'Monciškės'],['Vanagupės pušys',5176,79,52,'Vanagupė'],['Sensoria',3812,81,72,'Vanagupė'],['Green Eden',4662,93,30,'Kunigiškiai'],['Jūros Natos',3249,76,88,'Kunigiškiai'],['Ritmai 1',3557,69,70,'Kunigiškiai'],['Norai',4184,53,120,'Vanagupė'],['Palangos ašis',4902,84,123,'Centras'],['Palangos panorama',5070,42,36,'Centras'],['Palangos šilas D',3105,65,60,'Centras'],['Solus terasos',4100,20,160,'Vanagupė'],['Ritmai 2',3800,14,58,'Kunigiškiai'],['Takas 4',3046,9,126,'Kunigiškiai'],['Vaivos Kasos 2',3355,15,20,'Kunigiškiai'],['Ritmai 3 NOP',4772,22,18,'Kunigiškiai'],['Infinitum II',4130,0,46,'Kunigiškiai'],['Vila Verde',7726,0,18,'Vanagupė']];
-new Chart(scatterChart,{type:'bubble',data:{datasets:sc.map(s=>({label:s[0],data:[{x:s[1],y:s[2],r:Math.max(5,Math.sqrt(s[3])*1.2)}],backgroundColor:ZC[s[4]]+'cc',borderColor:ZC[s[4]]}))},options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': €'+c.parsed.x+'/m², '+c.parsed.y+'% sold'}}},scales:{x:{title:{display:true,text:'mid asking €/m²'},ticks:{callback:v=>v/1000+'k'}},y:{title:{display:true,text:'% sold'},max:100,ticks:{callback:v=>v+'%'}}}}});
+Chart.defaults.font.family="Inter,system-ui,Arial,sans-serif";Chart.defaults.color="#6b7178";
+const G={hi:'#213bc2',mid:'#66adff',lo:'#cccccc'};
+function tier(s){return s>=60?G.hi:(s>=30?G.mid:G.lo)}
+const sc=[['Sensu',6741,83,47],['Nativo',5545,75,149],['Vanagupės pušys',5176,79,52],['Sensoria',3812,81,72],['Palangos ašis',4902,84,123],['Norai',4184,53,120],['Solus',4100,20,160],['Takas 4',3046,9,126],['Ritmai 2',3800,14,58],['Vila Verde',7726,0,18],['Palangos šilas D',3105,65,60],['Jūros Natos',3249,76,88]];
+new Chart(scatter,{type:'bubble',data:{datasets:sc.map(s=>({label:s[0],data:[{x:s[1],y:s[2],r:Math.max(5,Math.sqrt(s[3])*1.15)}],backgroundColor:tier(s[2])+'cc',borderColor:tier(s[2])}))},
+options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': €'+c.parsed.x+'/m², '+c.parsed.y+'% sold'}}},
+scales:{x:{title:{display:true,text:'mid asking €/m²'},ticks:{callback:v=>v/1000+'k'},grid:{color:'#eee'}},y:{title:{display:true,text:'% sold'},max:100,grid:{color:'#eee'}}}}});
 </script>
 </body></html>
